@@ -13,6 +13,24 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// 默认生产的api路由，但我们要使用dingo api，先注释
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+/**
+ * 使用dingo api
+ */
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function ($api) {
+    $api->get('version', function () {
+        return response('this is version v1');
+    });
+});
+
+$api->version('v2', function ($api) {
+    $api->get('version', function () {
+        return response('this is version v2');
+    });
 });
