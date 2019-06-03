@@ -34,7 +34,8 @@ class VerificationCodesController extends Controller
 
             try {
                 $result = $easySms->send($phone, [
-                    'content'  =>  "【Lbbs社区】您的验证码是{$code}。如非本人操作，请忽略本短信"
+                    //【我的奶酪DLH】您的验证码是#code#。如非本人操作，请忽略本短信
+                    'content'  =>  "【我的奶酪DLH】您的验证码是{$code}。如非本人操作，请忽略本短信"
                 ]);
             } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
                 $message = $exception->getException('yunpian')->getMessage();
