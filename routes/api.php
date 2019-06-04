@@ -27,7 +27,7 @@ $api->version(
     'v1',
     [
         'namespace' => 'App\Http\Controllers\Api',
-        'middleware' => 'serializer:array'
+        'middleware' => ['serializer:array', 'bindings']
     ],
     function ($api) {
         // $api->get('version', function () {
@@ -85,6 +85,8 @@ $api->version(
                 // 发布话题
                 $api->post('topics', 'TopicsController@store')
                     ->name('api.topics.store');
+                $api->patch('topics/{topic}', 'TopicsController@update')
+                    ->name('api.topics.update');
             });
         });
     }
